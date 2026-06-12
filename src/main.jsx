@@ -1,17 +1,13 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './styles/index.css'
-import { createBrowserRouter, RouterProvider } from "react-router";
-import App from './App.jsx'
-import OtherPage from './pages/OtherPage.jsx';
-import SomeComponent from './components/someComponent.jsx';
-import ErrorPage from "./pages/ErrorPage";
-import routes from "./routes";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import routes from './routes';
+import './styles/index.css';
 
 const router = createBrowserRouter(routes);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
-)
+    <StrictMode>
+        <RouterProvider router={router} />
+    </StrictMode>
+);

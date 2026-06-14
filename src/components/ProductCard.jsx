@@ -1,31 +1,24 @@
-import useImageURL from "../hooks/useImageURL.js";
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 
-const Home = () => {
-  const { imageURL, error, loading } = useImageURL("Hu475i12tHBg94FIeD");
+const ProductCard = ({ productInfo }) => {
   const navigate = useNavigate();
-
-  if(loading) {
-    return <h2 className="text-center font-bold">Just A Moment</h2>;
-  }
-
-  if(error) {
-    console.log(error);
-  }
-
   return (
-    <main>
-      { error && 
-        <h2 className="text-center font-bold bg-gray-100">Error: Couldn't Load Image</h2>
-      }
-      { imageURL &&
-      <img src={imageURL} alt='mySHOP Hero Image'/>
-      }
-      <header className="text-center">Welcome to mySHOP</header>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={navigate('/shop')}>Start Shopping</button>
-      <p>mySHOP is a global grocery store franchise where you will find anything and everything that you need!</p>
-    </main>
+    <div
+      onClick={() => navigate(`/shop/${productInfo.name}`)}
+      className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer overflow-hidden flex flex-col"
+    >
+        <img
+          src={`/${productInfo.pathName}`}
+          alt={`${productInfo.name}`}
+          className="h-full object-contain"
+        />
+      <div className="p-4 flex flex-col gap-1">
+        <h3 className="font-semibold text-gray-900 text-base">{productInfo.name}</h3>
+        <p className="text-green-700 font-bold text-lg">${productInfo.price}</p>
+        <p className="text-gray-500 text-sm line-clamp-2">{productInfo.details}</p>
+      </div>
+    </div>
   );
 };
 
-export default Home; 
+export default ProductCard;

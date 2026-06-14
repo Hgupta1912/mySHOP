@@ -1,13 +1,21 @@
-<svg width="100%" viewBox="0 0 680 320" role="img" xmlns="http://www.w3.org/2000/svg">
+<svg width="300" height="80" viewBox="0 0 300 80" role="img" xmlns="http://www.w3.org/2000/svg">
   <title>mySHOP logo</title>
-  <desc>A minimal logo made of a circle, a rotated square, a bar, and an accent dot</desc>
 
-  <g transform="translate(340, 140)">
-    <circle cx="-54" cy="0" r="28" fill="#4A6FE3"/>
-    <rect x="-10" y="-22" width="44" height="44" rx="4" transform="rotate(45 12 0)" fill="none" stroke="#4A6FE3" stroke-width="3"/>
-    <rect x="38" y="-4" width="52" height="8" rx="4" fill="#1a1a2e"/>
-    <circle cx="100" cy="0" r="8" fill="#E3A84A"/>
-  </g>
+  <!-- shopping bag body -->
+  <rect x="4" y="28" width="44" height="40" rx="5" fill="#15803d"/>
 
-  <text x="340" y="210" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="500" letter-spacing="4" fill="#4A6FE3">mySHOP</text>
+  <!-- bag handle -->
+  <path d="M14 28 Q14 10 26 10 Q38 10 38 28" fill="none" stroke="#15803d" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- scarlet handle dots -->
+  <circle cx="14" cy="28" r="3" fill="#dc2626"/>
+  <circle cx="38" cy="28" r="3" fill="#dc2626"/>
+
+  <!-- wordmark -->
+  <text x="58" y="56"
+    font-family="system-ui, sans-serif"
+    font-size="38"
+    font-weight="500"
+    letter-spacing="-0.5"
+    fill="#15803d">my<tspan fill="#1a1a1a">SHOP</tspan></text>
 </svg>

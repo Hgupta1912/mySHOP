@@ -1,16 +1,48 @@
-# React + Vite
+# mySHOP
 
-This template provides a minimal setup to get React working in Vite with HMR, Prettier, and some ESLint rules.
+A single-page grocery shopping app built with React. Browse products, view individual listings, and manage a cart across multiple pages — all without a page reload.
 
-Currently, two official plugins are available:
+Built as part of [The Odin Project](https://www.theodinproject.com) React curriculum.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live demo:** _coming soon_
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Multi-page navigation with React Router
+- Product listing page with a card grid
+- Individual product pages with quantity selection
+- Shared cart state across pages via React Router's outlet context
+- Styled UI with Tailwind CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech stack
+
+- React 18
+- React Router v7
+- Tailwind CSS v4
+- Vite
+
+## Running locally
+
+```bash
+git clone https://github.com/yourusername/myshop.git
+cd myshop
+npm install
+npm run dev
+```
+
+## Project structure
+
+```
+src/
+  components/       # Reusable UI components (Header, ProductCard, CartListing)
+  pages/            # Route-level page components (Home, Shop, Listing, Cart)
+  data/             # Product catalog data
+  hooks/            # Custom React hooks
+  assets/           # Static assets
+  styles/           # Global styles
+  App.jsx           # Layout shell and shared cart state
+  main.jsx          # App entry point
+  routes.jsx        # Route definitions
+```

@@ -1,6 +1,6 @@
 # mySHOP
 
-A single-page grocery shopping app built with React. Browse products, view individual listings, and manage a cart across multiple pages — all without a page reload.
+A single-page grocery shopping app with client-side routing built with React. Browse products, view individual listings, and manage a cart across multiple pages — all without a page reload.
 
 Built as part of [The Odin Project](https://www.theodinproject.com) React curriculum.
 

@@ -1,9 +1,16 @@
 import { useOutletContext } from 'react-router';
 import catalog from '../data/catalog.js';
+import useCatalogSubset from '../hooks/useCatalogSubset.js';
+import LoadingPage from './LoadingPage.jsx';
 
 const CartListing = ({ name, qty }) => {
   const { removeItem } = useOutletContext();
-  const productInfo = catalog.find(p => p.name === name);
+  const { products, error, loading } = useCatalogSubset([name]);
+  const productInfo = products[0];
+  
+  if (loading) return <LoadingPage />;
+  if (error) return <ErrorPage title="Something went wrong" message="We're having trouble loading a product in your cart. Please try again later." />;
+  if (!productInfo) return <ErrorPage />; // uses defaults, correct copy for this case
 
   return (
     <div className="flex items-center gap-4 py-4 border-b border-gray-100">

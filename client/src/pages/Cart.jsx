@@ -1,16 +1,24 @@
-import { useOutletContext } from 'react-router';
-import { useNavigate } from 'react-router';
+import { useOutletContext, useNavigate } from 'react-router';
 import CartListing from '../components/CartListing.jsx';
-import catalog from '../data/catalog.js';
+import useCatalogSubset from '../hooks/useCatalogSubset.js';
+import LoadingPage from '../components/LoadingPage.jsx';
+import ErrorPage from './ErrorPage.jsx';
 
 const Cart = () => {
   const { items } = useOutletContext();
   const navigate = useNavigate();
 
+  const itemNames = items.map(item => item.name);
+  const { products, error, loading } = useCatalogSubset(itemNames);
+
+  if (loading) return <LoadingPage />;
+  if (error) return <ErrorPage title="Something went wrong" message="We're having trouble loading your cart. Please try again later." />;
+
   const total = items.reduce((acc, item) => {
-    const productInfo = catalog.find(p => p.name === item.name);
+    const productInfo = products.find(p => p.name === item.name);
     return acc + productInfo.price * item.qty;
   }, 0);
+
 
   if (items.length === 0) {
     return (

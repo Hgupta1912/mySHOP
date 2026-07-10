@@ -1,14 +1,20 @@
 import { useParams, useOutletContext } from 'react-router';
 import { useState } from "react";
-import catalog from "../data/catalog.js";
+import useCatalogSubset from "../hooks/useCatalogSubset.js";
+import ErrorPage from './ErrorPage.jsx';
+import LoadingPage from '../components/LoadingPage.jsx';
+
 
 function Listing() {
   const { productName } = useParams();
   const [qty, setQty] = useState(1);
   const { addItem } = useOutletContext();
-  const productInfo = catalog.find(product => product.name === productName);
-
-  if (!productInfo) return <p className="text-center text-gray-500 mt-20">Product not found.</p>;
+  const { products, error, loading } = useCatalogSubset([productName]);
+  const productInfo = products[0];
+  
+  if (loading) return <LoadingPage />;
+  if (error) return <ErrorPage title="Something went wrong" message="We're having trouble loading this product. Please try again later." />;
+  if (!productInfo) return <ErrorPage />; // uses defaults, correct copy for this case
 
   function handleManualInput(event) {
     const val = Number(event.target.value);
@@ -27,7 +33,7 @@ function Listing() {
 
       <article className="flex-1 flex flex-col gap-4">
         <h2 className="text-3xl font-bold text-gray-900">{productInfo.name}</h2>
-        <p className="text-2xl font-bold text-green-700">${productInfo.price}</p>
+        <p className="text-2xl font-bold text-green-700">${productInfo.price.toFixed(2)}</p>
         <p className="text-gray-500 leading-relaxed">{productInfo.details}</p>
 
         <div className="border-t border-gray-100 pt-4 flex flex-col gap-3">

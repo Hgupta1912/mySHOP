@@ -1,8 +1,11 @@
 import { Outlet } from 'react-router';
 import { useState } from 'react';
 import Header from "./components/Header.jsx";
+import useCatalog from "./hooks/useCatalog.js";
+
 
 function App() {
+    const { catalog, error, loading } = useCatalog();
     const [items, setItems] = useState([]);
 
     function addItem(name, qty) {
@@ -32,7 +35,7 @@ function App() {
     return (
         <main className='flex flex-col'>
             <Header qty={items.reduce((accumulator, curr) => {return accumulator + curr.qty;}, 0)}/>
-            <Outlet context={{ items, addItem, removeItem }}/>
+            <Outlet context={{ catalog, error, loading, items, addItem, removeItem }}/>
         </main>
     ); 
 }

@@ -9,7 +9,7 @@ const app = express();
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 100,
+    max: 1000,
     message: 'Too many requests from this IP, please try again later.',
     headers: true,
 });
@@ -33,13 +33,23 @@ app.use(express.urlencoded({extended:true}));
 
 
 
-//get all products and get a spec9fic porduct
 app.get('/api/products', async (req, res, next) => {
+  try {
+    const { names } = req.query;
 
-});
+    if (names) {
+      const nameList = Array.isArray(names) ? names : names.split(',');
+      const products = await prisma.product.findMany({
+        where: { name: { in: nameList } },
+      });
+      return res.json(products);
+    }
 
-app.get('/api/products/:productId', async (req, res, next) => {
-
+    const products = await prisma.product.findMany();
+    res.json(products);
+  } catch (err) {
+    next(err);
+  }
 });
 
 

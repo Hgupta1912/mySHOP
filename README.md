@@ -1,10 +1,10 @@
 # mySHOP
 
-A full-stack grocery shopping app with client-side routing built with React, backed by an Express REST API and a PostgreSQL database. Browse products, view individual listings, and manage a cart across multiple pages — all without a page reload.
+A full-stack grocery shopping app with client-side routing built with React, backed by an Express REST API and a PostgreSQL database. Browse products, view individual listings, and manage a cart across multiple pages (all without a page reload).
 
 Originally built as part of [The Odin Project](https://www.theodinproject.com) React curriculum, later extended with a self-built REST API and database to practice full-stack development beyond the original assignment.
 
-**Live demo:** [Click here](____________________________________)
+**Live demo:** [Click here](https://myshop-odin.netlify.app)
 
 ---
 
